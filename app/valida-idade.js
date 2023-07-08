@@ -1,9 +1,6 @@
 export function idade(dataIdade){
-    if(validandoIdade(dataIdade)){
-        console.log("essa data é valida")
-    }else{
-        
-        console.log("essa data não é valida")
+    if(!validandoIdade(dataIdade)){
+        dataIdade.setCustomValidity("O usuário precisa ser maior de idade")
     }
 }
 
