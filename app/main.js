@@ -2,7 +2,21 @@ import {validaCPF} from "./valida-cpf.js";
 import { idade } from "./valida-idade.js";
 
 const camposFOrmulario = document.querySelectorAll("[required]");
+const formulario = document.querySelector("[data-formulario]");
 let mensagemDeErro = ''
+
+formulario.addEventListener("submit", (evento)=>{
+  evento.preventDefault();
+  const repostasFormulario = {
+    "nome": evento.target.elements["nome"].value,
+    "email": evento.target.elements["email"].value,
+    "rg": evento.target.elements["rg"].value,
+    "cpf": evento.target.elements["cpf"].value,
+    "aniversaio": evento.target.elements["aniversario"].value 
+  }
+localStorage.setItem("fomulario", JSON.stringify(repostasFormulario))
+window.location.href='./abrir-conta-form-2.html';
+})
 
 camposFOrmulario.forEach((campo)=>{
   campo.addEventListener("invalid", evento => evento.preventDefault())
